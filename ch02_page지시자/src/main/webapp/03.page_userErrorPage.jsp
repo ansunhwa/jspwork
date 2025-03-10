@@ -11,7 +11,7 @@
 	<%
 		int one = 1, zero = 0;
 	%>
-	<h1>Directiv Ex</h1>
+	<h1>Directive Ex</h1>
 	<p>one과 zero의 사칙연산</p>
 	one + zero = <%=one + zero %></p>
 	one - zero = <%=one - zero %></p>

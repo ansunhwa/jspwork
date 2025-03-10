@@ -12,7 +12,7 @@
 </head>
 <body>
 <jsp:forward page="<%=blood + ".jsp" %>">
-	<jsp:param name="name" value="<%=name %>"/>
+                     <!-- 값이 다 넘어옴 -->
 </jsp:forward>
 	
 
