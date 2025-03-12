@@ -1,0 +1,44 @@
+create table test(
+    userid VARCHAR2(30) primary key,
+    userpw VARCHAR2(30) not null
+);
+
+insert into test values('user01','pass01');
+insert into test values('user02','pass02');
+insert into test values('user03','pass03');
+
+commit;
+
+create table member(
+    ID VARCHAR2(20) PRIMARY KEY,
+    PWD VARCHAR2(20) NOT NULL,
+    NAME VARCHAR2(20) NOT NULL,
+    GANDER CHAR(1),
+    BIRTHDAY CHAR(6),
+    EMAIL VARCHAR2(30),
+    ZIPCODE CHAR(5),
+    ADDRESS VARCHAR2(100),
+    DETAILADDRESS VARCHAR2(50),
+    HOBBY CHAR(5),
+    JOB VARCHAR2(30)
+);
+
+COMMENT ON COLUMN MEMBER.ID IS '회원아이디';
+COMMENT ON COLUMN MEMBER.PWD IS '비밀번호';
+COMMENT ON COLUMN MEMBER.NAME IS '이름';
+COMMENT ON COLUMN MEMBER.GANDER IS '성별';
+COMMENT ON COLUMN MEMBER.BIRTHDAY IS '생년월일';
+COMMENT ON COLUMN MEMBER.EMAIL IS '이메일';
+COMMENT ON COLUMN MEMBER.ZIPCODE IS '우편번호';
+COMMENT ON COLUMN MEMBER.ADDRESS IS '주소';
+COMMENT ON COLUMN MEMBER.DETAILADDRESS IS '상세주소';
+COMMENT ON COLUMN MEMBER.HOBBY IS '취미';
+COMMENT ON COLUMN MEMBER.JOB IS '직업';
+
+insert into member values('kim','1234','홍길동','1','980312','kim@naver.com','12345','서울특별시 강남구 한국빌딩','801호','10100','학생');
+
+commit;
+
+
+
+
