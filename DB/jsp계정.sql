@@ -39,6 +39,32 @@ insert into member values('kim','1234','홍길동','1','980312','kim@naver.com',
 
 commit;
 
+create table votelist(
+    num number primary key,
+    question varchar2(200) not null,
+    sdate date,
+    edate date,
+    wdate date,
+    type number default '1' not null,
+    active number default '1'
+);
+
+create table voteitem (
+    listnum number,
+    itemnum number,
+    item VARCHAR2(50),
+    count number DEFAULT '0',
+    primary key (listnum, itemnum)
+);
+
+create sequence SEQ_VOTE nocache;
+
+
+
+
+
+
+
 
 
 

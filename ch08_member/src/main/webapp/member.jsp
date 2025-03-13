@@ -4,18 +4,59 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원가입</title>
+<script src="script.js?v=<%=System.currentTimeMillis() %>"></script>  <!-- 버전 달라질때마다 새로고침 -->
+
+<!-- 주소 가져오기 -->
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+function findAddr() {
+    new daum.Postcode({
+        oncomplete: function(data) {
+	let roadAddr = data.roadAddress; // 도로명 주소
+	let jibunAddr = data.jibunAddress; // 지번 주소
+	let extraAddr = '';                //동이나 빌딩명을 넣을 변수
+	
+	document.getElementById("postcode").value = data.zonecode; // 우편번호
+	
+	if(data.userSelectedType == 'R') {  //사용자가 도로명 주소 선택
+		if(data.bname != '') {        /* 도로명 주소라면 동 이름도 써줄거임 */
+			extraAddr += data.bname;  // 동이름 있으면 넣고 없으면 X
+		}
+		if(data.buildingName != '') {
+			extraAddr += ', ' + data.buildingName;  //빌딩명
+		}
+		roadAddr += extraAddr != ''? '(' + extraAddr + ')' : ''; /* 비어있지않으면 동이름 넣고 아니면 안넣음 */	
+		document.getElementById("addr").value = roadAddr;
+		
+	} else {  //사용자가 지번주소 선택
+		if(data.buildingName != '') {
+			extraAddr += ', ' + data.buildingName;  //빌딩명
+		}
+		jibunAddr += extraAddr != ''? '(' + extraAddr + ')' : '';
+		document.getElementById("addr").value = jibunAddr;  /* data.jibunAddress; 도 가능 */
+	}
+	/* 포커스 넣어줄 수 있음 */
+        }
+    }).open();
+}
+
+</script>
 </head>
 <body>
 <!-- 회원가입 폼 -->
-<form action="">
+<form name="frm" method ="post" action="memberProc.jsp">
 	<table border="1" border-collapse="collapse" >
 		<tr>
 					<th colspan="3">회원가입</th>
 		</tr>
 		<tr>
 			<td>아이디</td>
-			<td><input name="id"><input type="button" value="중복확인"></td>
+			<td>
+			<input name=id onkeydown="inputIdChk();">  <!-- 키보드를 누르면 펑션 체크  아이디를 안쓰면 inUncheck로 넘어가게-->
+			<input type="button" value="중복확인" onclick="idCheck(this.form.id.value);"> <!-- 사용자가 적은 아이디 값을 넘겨줌 -->
+			<input type="hidden" name="idBtnCheck" value="idUncheck"> <!-- 체크이면 알림X 체크안했으면 누르라고할꺼 -->
+			</td>
 			<td>영문과 숫자로만 입력</td>
 		</tr>
 		<tr>
@@ -51,15 +92,15 @@
 		<tr>
 			<td>E-mail</td>
 				<td>
-					<input name="email" size="40" >
+					<input type="email" name="email" size="40" >
 				</td>
 				<td>ex) email@naver.com</td>
 		</tr>
 		<tr>
 			<td>우편번호</td>
 				<td>
-					<input name="zipcode" id="postcode" readonly>
-					<input type="button" value="우편번호 찾기" >
+					<input name="zipcode" id="postcode" readonly>  <!-- readonly - 직접넣는게아님 -->
+					<input type="button" value="우편번호 찾기" onclick="findAddr();">  <!-- 버튼을 누르면 주소(검색)창을 가지고 올것 -->
 				</td>
 				<td>우편번호를 검색하세요</td>
 		</tr>
@@ -100,9 +141,9 @@
 		</tr>
 		<tr>
 			<td colspan="3" align="center">
-					<input type="button" value="회원가입">&emsp;
+					<input type="button" value="회원가입" onclick="inputCheck();">&emsp;   <!-- 온클릭하면 아이디 중복 체크했는지 확인 -->
 					<input type="reset" value="다시쓰기">&emsp;
-					<input type="button" value="로그인">
+					<input type="button" value="로그인" onclick="location.href='login.jsp'">  <!-- 따옴표 구분하기 -->
 				</td>
 		</tr>
 		
