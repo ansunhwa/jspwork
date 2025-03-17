@@ -31,7 +31,7 @@
 	
 	if(result) {
 		msg = "설문을 추가하였습니다";
-		url = "VoteList.jsp";
+		url = "voteList.jsp";
 	}
 %>
 <script>

@@ -58,7 +58,7 @@ create table voteitem (
 );
 
 create sequence SEQ_VOTE nocache;
-
+commit;
 
 
 
