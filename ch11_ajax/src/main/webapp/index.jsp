@@ -274,26 +274,84 @@
 	
 	<script>
 	$(() => {
-		$('btn4').click(function) {
+		$('#btn4').click(function() {
 			$.ajax({
 				url : "ajax4.do",
-				data: {id:$('#input4').val()}],
+				data: {id:$('#input4').val()},
 				success: function(result){
 					console.log(result);
+					/*
+					//JSON으로 넘겼을 때
 					const value = "***********검색결과************<br>"
 							+ "ID : " + result.userId + "<br>"
 							+ "이름 : " + result.userName + "<br>"
 							+ "성별 : " + result.gender + "<br>"
 							+ "email : " + result.email + "<br>";
+					*/
+					
+					//Gson으로 넘겼을 때
+					const value = "***********검색결과************<br>"
+						+ "ID : " + result.id + "<br>"
+						+ "이름 : " + result.name + "<br>"
+						+ "성별 : " + result.gender + "<br>"
+						+ "email : " + result.email + "<br>";
 					$('#output4').html(value);
 				},
 				error: function(){
 					console.log("ajax통신 실패");
 				}
 			})
-		}
+		})
 	})
 	</script>
+	
+	<br><br>
+	
+	<h3>4. 여러 bean객체들을 ArrayList로 받기</h3>
+	
+	<input type="button" id="btn5" value="전송"> <br><br>
+	
+	<table>
+		<thead>
+			<th>ID</th>
+			<th>이름</th>
+			<th>성별</th>
+			<th>EMAIL</th>
+		</thead>
+		<tbody>
+		
+		</tbody>
+	</table>
+	
+	<script>
+	$(() => {
+		$("#btn5").click(function() {
+			$.ajax({
+				url:"ajax5.do" ,
+				success : function(result) {
+					console.log(Result);
+					
+					let value="";
+					for(let i=0; i<result.length; i++) {
+						value += "<tr>"
+								+ "<td>" + result[i].id + "</td>"
+								+ "<td>" + result[i].name + "</td>"
+								+ "<td>" + result[i].gender + "</td>"
+								+ "<td>" + result[i].email + "</td>"
+								+ "</tr>" ;
+					}
+					$('#output5 tbody').html(value);
+				},
+				error: function() {
+					console.log("ajax통신 실패");
+				}
+			})
+		})
+	})
+	</script>
+	
+	
+	
 	
 	
 	

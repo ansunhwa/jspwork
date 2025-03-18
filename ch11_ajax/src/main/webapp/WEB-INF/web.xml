@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd" version="4.0">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="4.0">
   <servlet>
     <description></description>
     <display-name>AjaxController1</display-name>
@@ -48,5 +48,35 @@
   <servlet-mapping>
     <servlet-name>AjaxServletController4</servlet-name>
     <url-pattern>/ajax4.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AjaxServletController5</display-name>
+    <servlet-name>AjaxServletController5</servlet-name>
+    <servlet-class>ajax01.AjaxServletController5</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AjaxServletController5</servlet-name>
+    <url-pattern>/ajax5.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ajaxReplyController1</display-name>
+    <servlet-name>ajaxReplyController1</servlet-name>
+    <servlet-class>ajaxReply.ajaxReplyController1</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ajaxReplyController1</servlet-name>
+    <url-pattern>/ajaxReply/rlist.bo</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ajaxReplyController2</display-name>
+    <servlet-name>ajaxReplyController2</servlet-name>
+    <servlet-class>ajaxReply.ajaxReplyController2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ajaxReplyController2</servlet-name>
+    <url-pattern>/ajaxReply/rInset.bo</url-pattern>
   </servlet-mapping>
 </web-app>

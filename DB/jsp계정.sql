@@ -61,10 +61,24 @@ create sequence SEQ_VOTE nocache;
 commit;
 
 
+ALTER TABLE member
+rename column gander to gender;
+commit;
 
+create table reply(
+    no number primary key,
+    content VARCHAR2(500),
+    ref number,
+    name VARCHAR2(20),
+    rdate date
+);
 
+create sequence seq_reply NOCACHE;
 
+insert into reply values(seq_reply.nextval, '첫 댓글이다!!', 1, '김처음', '2025/02/01');
+insert into reply values(seq_reply.nextval, '정말 귀엽네요', 1, '기요미', '2025/03/05');
+insert into reply values(seq_reply.nextval, '마음에 들어요', 1, '박하트', '2025/03/07');
 
-
+commit;
 
 

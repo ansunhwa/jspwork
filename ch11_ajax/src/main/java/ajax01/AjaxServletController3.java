@@ -49,7 +49,7 @@ public class AjaxServletController3 extends HttpServlet {
 		jArr.add(name);
 		jArr.add(age);
 		
-		response.setContentType("text/html");
+		response.setContentType("text/html");   //json타입을 사용할 땐 반든시 타입을 넣어줘야함!!
 		response.setContentType("application/json");
 		response.getWriter().print(jArr);
 		*/
@@ -59,7 +59,7 @@ public class AjaxServletController3 extends HttpServlet {
 		//v4. 응답 데이터가 여러개 일 때 객체로 반환
 		// JSONObject
 		JSONObject jObj = new JSONObject();
-		jObj.put("name", name);
+		jObj.put("name", name);   //객체는 키:값 
 		jObj.put("age", age);
 		
 		response.setContentType("application/json");
