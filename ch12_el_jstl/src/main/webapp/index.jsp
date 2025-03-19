@@ -16,5 +16,17 @@
 	<h4><a href="el.do">01_EL구문</a></h4> <br>
 	<h4><a href="operation.do">02_EL연산자</a></h4>   <!-- a태그는 get방식 -->
 	
+	<br><hr>
+	
+	<h1>JSP Action Tag</h1>
+	<p>xml 기술을 이용하여 기존의 JSP문법을 확장시키는 기술을 제공하는 태그들</p>	
+	<!-- xml 내가 태그< >를 정의해서 사용할 수 있다 -->
+	
+	<h3>* 커스텀 액션 태그</h3>
+	<a href="views/02_customAction/jstl.jsp">jstl</a>
+	
+	
+	
+	
 </body>
 </html>
